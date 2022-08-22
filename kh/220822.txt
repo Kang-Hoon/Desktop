@@ -1,0 +1,77 @@
+private int patrolIndex = 0;
+
+private float patrolTime = 3;
+private float patrolPrev = 0;
+
+float idleTime = 3;
+float idlePrev = 0;
+
+public Transform target;
+void SetTarget(Transform target)
+{
+	this.target = target;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Detector : MonoBehaviour
+{
+    private List<int> testa = new List<int>();
+    private void OnTriggerEnter(Collider collision)
+    {
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player") 
+        {
+            transform.SendMessageUpwards("SetTarget", other.transform, SendMessageOptions.DontRequireReceiver);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+
+
+
+public bool IsInTransition() 
+{
+	// 애니메이터에서 현재 실행되고 있는 노드의 정보를 얻습니다
+	AnimatorStateInfo currInfo = animator.GetCurrentAnimatorStateInfo(0);
+	// 애니메이터에서 다음에 실행될 애니메이션의 정보를 얻습니다
+	AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
+
+	return false;
+}
