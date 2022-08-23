@@ -1,0 +1,63 @@
+from tarfile import BLOCKSIZE
+import tkinter as tk
+
+root = tk.Tk()
+WIDTH = 800
+HEIGHT = 800
+canvas = tk.Canvas(root, width=WIDTH, height=HEIGHT)
+canvas.pack()
+MAPSIZE = 10
+BLOCKSIZE = 20
+
+x0 = WIDTH - 500
+y0 = HEIGHT - 500
+x1 = WIDTH/2
+y1 = HEIGHT/2
+
+colorBlock = "white"
+
+# 기본 이중 리스트 생성
+board1010 = [[0 for col in range(5)] for row in range(5)]
+ME = 2
+
+# 기본 맵 설정
+board1010[1][1] = ME
+for i in range (MAPSIZE):
+    board1010[0][i] = 1
+    board1010[MAPSIZE-1][i] = 1
+    board1010[i][0] = 1
+    board1010[i][MAPSIZE-1] = 1
+
+print(board1010)
+print()
+for _ in board1010:
+    print(_)
+print()
+
+player = canvas.create_rectangle
+def draw_rect():
+    player((x1, y1, x1 + 10, y1 + 10), fill="green")
+def del_rect():
+    player(x1, y1, x1 + 10, y1 + 10, fill="white")
+def draw_square(i,j):
+    player(((x0+i*BLOCKSIZE),(y0+j*BLOCKSIZE),(x0+i*BLOCKSIZE)+BLOCKSIZE,(y0+j*BLOCKSIZE)+BLOCKSIZE), fill=colorBlock)
+
+for i in range(5):
+    for j in range(5):
+        if board1010[i][j] == 1 :
+            colorBlock = "tomato"
+            draw_square(i,j)
+        elif board1010[i][j] == 2 :
+            colorBlock = "green"
+            draw_square(i,j)
+        elif board1010[i][j] == 3 :
+            colorBlock = "purple"
+            draw_square(i,j)
+        else :
+            colorBlock = "white"
+            draw_square(i,j)    
+
+
+        
+
+root.mainloop()
