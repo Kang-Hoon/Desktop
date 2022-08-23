@@ -75,3 +75,20 @@ public bool IsInTransition()
 
 	return false;
 }
+
+
+
+
+
+
+// 공격할 수 있는 거리가 되었을 때 공격 상태로 변경합니다
+float distance = GetTargetDistance();
+if(distance <= attackDist)
+{
+	Switch (State.ATTACK):
+}
+
+float GetTargetDistance()
+{
+	return Vector3.Distance(transform.position, target.position);
+}
